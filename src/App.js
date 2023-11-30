@@ -1,24 +1,28 @@
-import logo from './logo.svg';
+import { createContext, } from 'react';
 import './App.css';
+import  {BrowserRouter, Routes, Route} from 'react'
+import Home from './pages/Home'
+import Header from './components/Header'
+import Footer from './components/Footer'
+import Signup from './pages/Signup'
+import CardContainer from './components/CardContainer';
+
+export const UserContext = createContext()
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Signup />} />
+         <Route path='/' element={<Header />} />
+        <Route path='/' element={<Footer />} /> 
+        <Route path='/' element={<Home />} />
+        <Route path='/' element={<CardContainer />}/>
+
+      </Routes>
+
+    </BrowserRouter>
   );
 }
 
