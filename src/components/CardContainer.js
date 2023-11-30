@@ -1,77 +1,57 @@
-import { Button } from 'bootstrap'
-import { useEffect, useState } from 'react'
+// import { useState, useEffect } from "react"
 
 
-export default function CardContainer() {
-	const { getRecipe, setRecipe } = useState()
-	useEffect(() => {
+// export default function CardContainer({ token }) {
 
-		fetch('http://localhost:8080')
+//   const [recipes, setRecipes] = useState()
 
-			.then(res => res.json())
-			.then(data => getRecipe(data))
-			.catch(err => console.log(err))
+//   useEffect(() => {
+//     fetch('https://localhost:8080')
+//       .then(res => res.json())
+//       .then(setRecipes)
+//       .catch(alert)
+//   }, [])
+
+//   const handleFormSubmit = evt => {
+// 	evt.preventDefault()
+// 	const formData = {}
+// 	formData.title = evt.target.title.value 
+// 	formData.content = evt.target.content.value 
+
+// 	fetch ('http://localhost:8080', {
+// 			method: 'POST',
+// 			headers: {
+// 					'Content-Type': 'application/json',
+
+// 			},
+// 			'Content-Type': 'application/json',
 
 
-	}, [getRecipe])
-
-	const handleFormSubmit = evt => {
-
-		evt.preventDefault()
-		const formData = {};
-		formData.title = evt.target.title.value
-		formData.content = evt.target.content.value
+// 	})
+// 			.then(res => res.json())
+// 			.then(cleanData => setRecipes(cleanData))
+// 			.catch (err => console.error(err))
 
 
-		fetch('http://localhost:8080', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(formData),
-		})
-			.then(res => res.json())
-			.then(cleanData => setRecipe(cleanData))
-			.catch(err => console.error(err))
+//   }
 
-	}
-	 
-		
-	  
-	  
-	return (
-
-		<>
-			<form action='' onClick={evt = handleFormSubmit(evt)}>
-				<label htmlFor=''>
-					<input type="text" name='title' id='' />
-				</label>
-				<label htmlFor=''>
-					<input type="text" name='content' id='' />
-				</label>
-				
-
-			<Button type='submit'>Add Recipe</Button>
-
-			</form>
-
-			<div className='cardContainer'>
-				{getRecipe.map((singleRecipe, index) => {
-
-					return (
-
-						<div classname = 'singleCard' key={singleRecipe._id}>
-							
-							<h2>title:{singleRecipe.title}</h2>
-							<p>{singleRecipe.content}</p>
-					
-						</div>
-					)
-				} )}
-
-			</div>
-		</>
-
-	)
-
-}
+//   return (
+//     <main>
+//       <h1>Recipes</h1>
+//       <CardContainer token={token} setRecipes={setRecipes} />
+//       <section className="recipe-cards">
+//         {recipes && recipes.map(recipe => (
+//           <article key={recipe.id}>
+//             <h2>{recipe.name}</h2>
+//             <ul>
+//               {recipe.ingredients.map(ingredient => (
+//                 <li key={ingredient}>{ingredient}</li>
+//               ))}
+//             </ul>
+//             <p>{recipe}</p>
+//           </article>
+//         ))}
+//       </section>
+//     </main>
+//   )
+// }

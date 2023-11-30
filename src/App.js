@@ -1,29 +1,43 @@
 import { createContext, } from 'react';
 import './App.css';
-import  {BrowserRouter, Routes, Route} from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home'
 import Header from './components/Header'
+import LoginForm from './pages/Login';
 import Footer from './components/Footer'
 import Signup from './pages/Signup'
-import CardContainer from './components/CardContainer';
+//import CardContainer from './components/CardContainer';
 
 export const UserContext = createContext()
 
 function App() {
 
+    
+
   return (
-    <BrowserRouter>
+    <>  
+    hgghhg
+          <Header/>
+        <BrowserRouter>
+      
       <Routes>
-        <Route path='/' element={<Signup />} />
-         <Route path='/' element={<Header />} />
-        <Route path='/' element={<Footer />} /> 
-        <Route path='/' element={<Home />} />
-        <Route path='/' element={<CardContainer />}/>
-
+       
+        <Route path='/Login' element={<LoginForm />} />
+       
+       
+        <Route path='/Signup' element={<Signup />}/>
+        <Route path='/' element={<Home />}/>
+        <>  
+        </>
       </Routes>
-
+      
     </BrowserRouter>
+        <Footer/>
+
+    </>
+
+
   );
 }
 
-export default App;
+export default App

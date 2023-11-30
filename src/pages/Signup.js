@@ -26,7 +26,7 @@ export default function Signup() {
 				Password:
 				<input type='password' name='password' />
 			</label>
-			<button>Signup</button>
+			
 		</form>
 	)
 }
