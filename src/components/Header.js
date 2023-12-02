@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import React from "react"
 
 export default function Header(){
   const [loggedIn, setLoggedIn] = useState(false)
@@ -10,23 +11,20 @@ export default function Header(){
   },[])
 
   return (
-    <header>
-      <nav>
+    <header >
+      
+      <nav style={{}}>
         <ul>
-          <li><a href="/Home">Home</a></li>
+          <li >
+            <a  href="/Home">Welcome To The Mayne Course Recipe Builder </a>
+          </li>
           {!loggedIn && 
               <>
-                <li><a href="/signup">Signup</a></li>
-                <li><a href="/contact">Contact</a></li>
-               
+                {/* <li ><a href="/signup">Signup</a></li>
+                <button  type="submit" style={{backgroundColor:'skyblue'}}>Signup</button>     */}
               </>
           }
         </ul>
-        <p>
-
-        </p>
-
-
       </nav>
     </header>
   )

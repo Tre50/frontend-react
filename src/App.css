@@ -7,3 +7,41 @@ padding: 0;
 box-sizing: inherit;
 
 }
+
+body {
+    box-sizing: border-box;
+    border-style: solid;
+    border-color: fuchsia;
+
+
+}
+
+
+header {
+background-color: goldenrod;
+text-align: center;
+flex-direction: row;
+
+
+}
+main {
+
+    text-align: center;
+
+
+}
+
+
+h1{
+
+font-size: medium;
+font-family: cursive;
+font-weight: 900;
+
+
+}
+h1>body{
+    background-color: darkorange;
+    text-align: center;
+}
+

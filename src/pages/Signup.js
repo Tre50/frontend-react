@@ -1,32 +1,53 @@
-export default function Signup() {
-	const handleFormSubmit = e => {
-		e.preventDefault()
+import React, { useState } from 'react';
 
-		const formData = {
-			email: e.target.email.value,
-			password: e.target.password.value,
-		}
+const SignupForm = () => {
+  // State to manage form data
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+    // Add other fields as needed for signup
+  });
 
-		fetch('http://localhost:8080/signup', {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify(formData),
-		})
-			.then(res => res.json())
-			.then(data => console.log(data))
-	}
+  // Function to handle form input changes
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
-	return (
-		<form action='submit' onSubmit={handleFormSubmit}>
-			<label htmlFor=''>
-				Email:
-				<input type='email' name='email' />
-			</label>
-			<label htmlFor=''>
-				Password:
-				<input type='password' name='password' />
-			</label>
-			
-		</form>
-	)
-}
+  // Function to handle form submission
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Perform signup logic here (e.g., send data to backend)
+    console.log('Signup form submitted with data:', formData);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      {/* Form fields for signup */}
+      <label htmlFor="email">Email:</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        value={formData.email}
+        onChange={handleInputChange}
+        required
+      />
+
+      <label htmlFor="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        value={formData.password}
+        onChange={handleInputChange}
+        required
+      />
+
+      {/* Other signup fields and a submit button */}
+      <button type="submit">SignUp</button>
+    </form>
+  );
+};
+
+export default SignupForm;
