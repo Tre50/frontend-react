@@ -19,6 +19,8 @@ const SignupForm = () => {
     event.preventDefault();
     // Perform signup logic here (e.g., send data to backend)
     console.log('Signup form submitted with data:', formData);
+    
+    fetch ('https://backend-events2.web.app/addUser',{body:formData, method:'POST'} )
   };
 
   return (

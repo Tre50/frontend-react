@@ -16,17 +16,17 @@ const SignupForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // Perform validation (e.g., check if passwords match)
+    // Perform validation (check if passwords match)
     if (formData.password !== formData.confirmPassword) {
       alert("Passwords don't match. Please re-enter your password.");
       return;
     }
 
-    // Perform further processing (e.g., sending data to the server)
+    // Perform further processing & sending data to the server
     // For demonstration purposes, you can log the form data
     console.log('Form data:', formData);
 
-    // Clear form fields after successful signup (for demonstration purposes)
+    // Clear form fields after successful signup for demonstration purposes
     setFormData({
       name: '',
       email: '',
@@ -37,7 +37,8 @@ const SignupForm = () => {
 
   return (
 
-    //these are my form buttons and a little css
+    //these are my form buttons and a little inline css
+    <header>
     <form onSubmit={handleSubmit}>
       <label htmlFor="name">Name:</label>
       <br></br>
@@ -47,10 +48,11 @@ const SignupForm = () => {
         name="name"
         value={formData.name}
         onChange={handleInputChange}
-        style={{ width: '100px', backgroundColor: 'orange', padding: '.5px' }}
+        style={{ width: '100px', backgroundColor: 'gray', padding: '.5px' }}
+        autoComplete='name'
         required
       />
-<br></br>
+        <br></br>
       <label htmlFor="email">Email:</label>
       <br></br>
       <input
@@ -59,7 +61,8 @@ const SignupForm = () => {
         name="email"
         value={formData.email}
         onChange={handleInputChange}
-        style={{ width: '100px', backgroundColor: 'orange', padding: '.5px' }}
+        style={{ width: '100px', backgroundColor: 'grey', padding: '.5px' }}
+        autoComplete='email'
         required
       />
 <br></br>
@@ -71,19 +74,12 @@ const SignupForm = () => {
         name="password"
         value={formData.password}
         onChange={handleInputChange}
-        style={{ width: '100px', backgroundColor: 'orange', padding: '.5px' }}
-        // style={{
-        //   backgroundColor: 'orange',
-        //   width: '100px', // Adjust width as needed
-        //   height: '30px', // Adjust height as needed
-        //   padding: '5px', // Adjust padding as needed
-        //   borderRadius: '4px', // Optional: Add border-radius for rounded corners
-        //   border: '1px solid #ccc' // Optional: Add border for visual distinction
-        //}}
+        style={{ width: '100px', backgroundColor: 'gray', padding: '.5px' }}
+       autoComplete='new-password'
         required
       />
-
-      {/* <label htmlFor="confirmPassword">Confirm Password:</label>
+      <br></br>
+      <label htmlFor="confirmPassword">Confirm Password:</label>
       <br></br>
       <input
         type="password"
@@ -91,20 +87,16 @@ const SignupForm = () => {
         name="confirmPassword"
         value={formData.confirmPassword}
         onChange={handleInputChange}
-        style={{
-          backgroundColor: 'orange',
-          width: '100px', // Adjust width as needed
-          height: '30px', // Adjust height as needed
-          padding: '5px', // Adjust padding as needed
-          borderRadius: '4px', // Optional: Add border-radius for rounded corners
-          border: '1px solid #ccc' // Optional: Add border for visual distinction
-        }}
+        style={{ width: '100px', backgroundColor: 'gray', padding: '.5px' }}
+        autoComplete='new-password'
         required
-      /> */}
-<br></br>
-      <button style={{backgroundColor: 'skyblue'}} type="submit">Submit</button>
+      />
+      <br></br>
+      <br></br>
+      <button style={{backgroundColor: 'skyblue'}} type="submit" onClick={handleSubmit}>Submit</button>
       
     </form>
+    </header>
   );
 };
 

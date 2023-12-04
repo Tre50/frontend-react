@@ -11,9 +11,9 @@ export default function Header(){
   },[])
 
   return (
-    <header >
+    <div >
       
-      <nav style={{}}>
+      <nav >
         <ul>
           <li >
             <a  href="/Home">Welcome To The Mayne Course Recipe Builder </a>
@@ -26,6 +26,6 @@ export default function Header(){
           }
         </ul>
       </nav>
-    </header>
+    </div>
   )
 }

@@ -4,29 +4,48 @@
 
 margin: 0;
 padding: 0;
-box-sizing: inherit;
+box-sizing: inherit
 
 }
 
-body {
+/* body {
     box-sizing: border-box;
     border-style: solid;
     border-color: fuchsia;
+
+
+} */
+
+li {
+
+background-color: aqua;
+text-align: center;
+
+
 
 
 }
 
 
 header {
+margin: 1px;
 background-color: goldenrod;
 text-align: center;
-flex-direction: row;
+
+padding: .5px;
+border-radius: 25px;
+border-style:groove;
+border-width: 10px;
+border-color: gold;
+
+
 
 
 }
 main {
 
     text-align: center;
+    
 
 
 }
@@ -37,11 +56,20 @@ h1{
 font-size: medium;
 font-family: cursive;
 font-weight: 900;
+text-align: center;
+background-color: chartreuse;
+border-radius: 50px;
+border-style: solid;
 
 
 }
-h1>body{
-    background-color: darkorange;
-    text-align: center;
+h2 {
+margin: 10px;
+margin-top: 20px;
+background-color: chartreuse;
+border-radius: 50px;
+border-style:solid;
+border-style: inset;
+
 }
 
