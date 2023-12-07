@@ -16,43 +16,35 @@ box-sizing: inherit
 
 } */
 
+
 li {
 
 background-color: aqua;
 text-align: center;
 
-
-
-
 }
-
 
 header {
 margin: 1px;
-background-color: goldenrod;
+/* background-image: url(/Users/tremaynejohnson/Pictures/Photos Library;photoslibrary/resources/renders/B/BB8711C7-E80B-4155-B8D7-925FCE859DE3_1_201_a.jpeg); */
 text-align: center;
-
-padding: .5px;
+padding: 100px;
 border-radius: 25px;
 border-style:groove;
 border-width: 10px;
 border-color: gold;
 
 
-
-
 }
+
 main {
 
     text-align: center;
-    
-
 
 }
 
 
 h1{
-
 font-size: medium;
 font-family: cursive;
 font-weight: 900;
@@ -60,8 +52,7 @@ text-align: center;
 background-color: chartreuse;
 border-radius: 50px;
 border-style: solid;
-
-
+font-size: 50px;
 }
 h2 {
 margin: 10px;

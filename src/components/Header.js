@@ -11,18 +11,20 @@ export default function Header(){
   },[])
 
   return (
+    
     <div >
-      
+      <br></br>
+      <br></br>
       <nav >
         <ul>
-          <li >
+          {/* <li >
             <a  href="/Home">Welcome To The Mayne Course Recipe Builder </a>
-          </li>
+          </li> */}
           {!loggedIn && 
-              <>
-                {/* <li ><a href="/signup">Signup</a></li>
-                <button  type="submit" style={{backgroundColor:'skyblue'}}>Signup</button>     */}
-              </>
+              <div >
+                {/* <li ><a href="/signup">Signup</a></li> */}
+                {/* <button  type="submit" style={{backgroundColor:'skyblue'}}>Signup</button>     */}
+              </div>
           }
         </ul>
       </nav>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const SignupForm = () => {
+const Signup = () => {
   // State to manage form data
   const [formData, setFormData] = useState({
     email: '',
@@ -20,10 +20,18 @@ const SignupForm = () => {
     // Perform signup logic here (e.g., send data to backend)
     console.log('Signup form submitted with data:', formData);
     
-    fetch ('https://backend-events2.web.app/addUser',{body:formData, method:'POST'} )
+    fetch ('https://backend-events2.web.app/addUser',{ method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(formData),} )
   };
 
   return (
+
+    <div>
+
+
     <form onSubmit={handleSubmit}>
       {/* Form fields for signup */}
       <label htmlFor="email">Email:</label>
@@ -47,9 +55,10 @@ const SignupForm = () => {
       />
 
       {/* Other signup fields and a submit button */}
-      <button type="submit">SignUp</button>
+      <button type="submit" style={{backgroundColor:'skyblue'}}   >SignUp</button>
     </form>
+    </div>
   );
 };
 
-export default SignupForm;
+export default Signup;

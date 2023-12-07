@@ -3,10 +3,12 @@ import React, { useState, useEffect } from "react";
 export default function CardContainer({ token }) {
   const [recipes, setRecipes] = useState([]);
   const [formData, setFormData] = useState({ title: "", content: "" });
+ 
 
   useEffect(() => {
     // Fetch recipes when the component mounts
-    fetch("https://backend-events2.web.app/recipe")
+    fetch("https://backend-events2.web.app/recipe") 
+        
       .then((res) => res.json())
       .then((data) => setRecipes(data))
       .catch((err) => console.error(err));
@@ -46,39 +48,37 @@ export default function CardContainer({ token }) {
 
   return (
     <main>
-    <h1>Recipes</h1>
-    <form onSubmit={handleFormSubmit}>
-    <input
-    type="text"
-    name="title"
-    value={formData.title}
-    placeholder="Title"
-     onChange={handleInputChange}
-    required
-    />
-     <textarea
-     name="content"
-    value={formData.content}
-    placeholder="Content"
-     onChange={handleInputChange}
-    required
-     ></textarea>
-    <button type="submit">Add Recipe</button>
-     </form>
-    <section className="recipe-cards">
-    {recipes &&
-    recipes.map((recipe) => (
-    <article key={recipe.id}>
-    <h2>{recipe.name}</h2>
-    <ul>
-         {recipe.Ingredients.map((ingredient, index) => (
-         <li key={index}>{ingredient}</li>
-         ))}
-     </ul>
-     <p>{recipe.recipe}</p>
-      </article>
-    ))}
-        </section>
-        </main>
-    );
-    }
+      <h1>Recipes</h1>
+      <form onSubmit={handleFormSubmit}>
+        <input
+          type="text"
+          name="title"
+          value={formData.title}
+          placeholder="Title"
+          onChange={handleInputChange}
+          required
+        />
+        <textarea
+          name="content"
+          value={formData.content}
+          placeholder="Content"
+          onChange={handleInputChange}
+          required
+        ></textarea>
+        <button type="submit">Add Recipe</button>
+      </form>
+      <section className="recipe-cards">
+        {recipes &&
+          recipes.map((recipe) => (
+            <article key={recipe.id}>
+              <h2>{recipe.name}</h2>
+              <p>
+                {recipe.Ingredients}
+              </p>
+              <p>{recipe.recipe}</p>
+            </article>
+          ))}
+      </section>
+    </main>
+  );
+}
