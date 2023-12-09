@@ -1,25 +1,36 @@
 import React, { useState, useEffect } from "react";
-
+//import "./styles.css";
 export default function CardContainer({ token }) {
   const [recipes, setRecipes] = useState([]);
   const [formData, setFormData] = useState({ title: "", content: "" });
- 
+  const [selectedRecipe, setSelectedRecipe] = useState(null);
+  const [imageUrl, setImageUrl] = useState("")
 
-  useEffect(() => {
-    // Fetch recipes when the component mounts
-    fetch("https://backend-events2.web.app/recipe") 
-        
-      .then((res) => res.json())
-      .then((data) => setRecipes(data))
-      .catch((err) => console.error(err));
-  }, []);
+  const findRecipe = (evt) => {
+    evt.preventDefault();
+    console.log('running findRecipe')
+    const query = { query: formData.title };
+    fetch("https://api-iodlq5cdhq-uc.a.run.app/findRecipe", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(query),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("FIND RECIPE ->", data);
+        setRecipes(data);
+      })
+      .catch((err) => console.log);
+  };
 
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
 
     const newRecipe = {
-      title: formData.title,
-      content: formData.content,
+      name: formData.title,
+      Ingredients: formData.content,
       // Other properties as needed for your recipe object
     };
 
@@ -33,10 +44,8 @@ export default function CardContainer({ token }) {
     })
       .then((res) => res.json())
       .then((data) => {
-        // Update recipes with the new data
-        setRecipes(data);
-        // Reset form fields after submission
-        setFormData({ title: "", content: "" });
+        setRecipes(data); // Ensure the response includes the updated list of recipes
+        setFormData({ title: "", content: "" }); // Reset form fields after submission
       })
       .catch((err) => console.error(err));
   };
@@ -46,10 +55,19 @@ export default function CardContainer({ token }) {
     setFormData({ ...formData, [name]: value });
   };
 
+  const handleImageClick = (recipe) => {
+    setSelectedRecipe(recipe);
+    if (recipe.imageUrl) {
+      setImageUrl(recipe.imageUrl);
+    } else {
+      setImageUrl("");
+    }
+  };
+
   return (
     <main>
       <h1>Recipes</h1>
-      <form onSubmit={handleFormSubmit}>
+      <form onSubmit={findRecipe}>
         <input
           type="text"
           name="title"
@@ -58,24 +76,35 @@ export default function CardContainer({ token }) {
           onChange={handleInputChange}
           required
         />
-        <textarea
-          name="content"
-          value={formData.content}
-          placeholder="Content"
-          onChange={handleInputChange}
-          required
-        ></textarea>
-        <button type="submit">Add Recipe</button>
+        <button type="submit">Submit</button>
       </form>
+
+      {/* Display Canva image from URL */}
+      <section className="image-container">
+       
+          {imageUrl && <img src={"gs://backend-events2-default-rtdb-backups/OVEN BAKED SNAPPER.png"} alt="Recipe Image" /> }
+          
+      </section>
+
+      {/* Display selected recipe details */}
+      <section className="recipe-details">
+        {selectedRecipe && (
+          <div>
+            <h2>{selectedRecipe.id}</h2>
+            <p>{selectedRecipe.Ingredients}</p>
+            {/* Add other recipe properties as needed */}
+          </div>
+        )}
+      </section>
+
+      {/* Display recipes */}
       <section className="recipe-cards">
         {recipes &&
-          recipes.map((recipe) => (
-            <article key={recipe.id}>
-              <h2>{recipe.name}</h2>
-              <p>
-                {recipe.Ingredients}
-              </p>
-              <p>{recipe.recipe}</p>
+          recipes.map((recipe, index) => (
+            <article key={index} onClick={() => handleImageClick(recipe)}>
+              <h2>{recipe.id}</h2>
+              <p>{recipe.Ingredients}</p>
+              {/* Add other recipe properties as needed */}
             </article>
           ))}
       </section>

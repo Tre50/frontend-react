@@ -7,12 +7,12 @@ export default function RecipeList({ token }) {
   const [ingredients, setIngredients] = useState('');
 
   useEffect(() => {
-    fetch('https://backend-events2.web.app/recipe',{
-    header: {
-      "Content-Type": "application/json",
+    fetch('https://backend-events2.web.app/recipe', {
+      header: {
+        "Content-Type": "application/json",
 
-    }
-  })
+      }
+    })
       .then(res => res.json())
       .then(data => console.log(data))
       .then(setRecipes)
@@ -21,63 +21,84 @@ export default function RecipeList({ token }) {
 
   const handleBuildClick = () => {
     const newRecipe = {
-      id: recipes.length + 1, // Generate a unique ID
-      name: recipeName,
-      ingredients: convertToArray(ingredients),
+      id: recipeName,
+      Ingredients: ingredients
     };
-
-    setRecipes([...recipes, newRecipe]);
     setRecipeName('');
     setIngredients('');
+
+    fetch('https://backend-events2.web.app/recipe', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newRecipe)
+    })
+      .then(res => res.json())
+      .then(data => console.log(data))
+      .then(setRecipes)
+      .catch(console.error);
+
   };
 
-  function convertToArray(inputString) {
-    let items = inputString.split("* ");
-    let result = items.map(item => item.trim()).filter(item => item !== '');
-    return result;
-  }
 
   return (
-    <div>
+    <div >
       <main>
         <h2>Recipe Builder</h2>
+        <img
+      src="https://drive.google.com/file/d/1lQSzlWdWO-AaTmCdtrmtUo8Dx-bIt-KE/view?usp=drive_link"  // Replace with your image URL
+      alt="Canva Image" // Add alternative text for accessibility
+      style={{ maxWidth: 'auto', height: 'auto' }} // Apply styling if needed
+    />
+    
+        <br/>
         {/* Input fields for recipe name and ingredients */}
         <input
           type="text"
           placeholder="Enter Recipe Name"
           value={recipeName}
           onChange={(e) => setRecipeName(e.target.value)}
+          
+                  
+        
         />
+        <br/>
+        <br/>
         <textarea
           placeholder="Enter Ingredients"
           value={ingredients}
           onChange={(e) => setIngredients(e.target.value)}
+          style={{}}
         ></textarea>
-
+           
         {/* Display existing recipes and newly added recipe */}
         <section className="recipe-card">
-          
-        </section>
 
+        </section>
+        <br/>
+        <br/>
         {/* Build button to add the new recipe */}
         <button
           type="button"
-          style={{ backgroundColor: 'green', width: '100px'}}
+          style={{ backgroundColor: 'green', width: '100px' }}
           onClick={handleBuildClick}
         >
+           
+         
           Build
         </button>
         <form>
-            {recipes &&
-    recipes.map((recipe) => (
-    <article key={recipe.id}>
-    <h2>{recipe.name}</h2>
-    <p>
-        {recipe.ingredients}
-    </p>
-    
-      </article>
-    ))}
+          {recipes &&
+            recipes.map((recipe) => (
+              <article key={recipe.id}>
+                <h2>{recipe.name}</h2>
+                <p>
+                  {recipe.ingredients}
+                </p>
+
+              </article>
+            ))}
         </form>
       </main>
     </div>

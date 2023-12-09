@@ -4,11 +4,12 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home'
 import Header from './components/Header'
-//import SignupForm from './components/SignupForm';
+import SignupForm from './components/SignupForm';
 import Footer from './components/Footer'
 import CardContainer from './components/CardContainer';
 import RecipeList from './components/RecipeList';
 import Signup from './pages/Signup'
+//import DataDisplay from './components/DataDisplay';
 
 
 
@@ -17,7 +18,7 @@ import Signup from './pages/Signup'
 
 
 export const UserContext = createContext()
-
+// const DataDisplay = ({ data }) =>
 
 function App() {
 
@@ -37,11 +38,11 @@ function App() {
         <Header/>
         
       <Routes>
-        <Route path='/Signup' element={<Signup />} />
-        {/* <Route path='/SignupForm' element={<SignupForm />}/> */}
-        <Route path='/CardContainer' element={<CardContainer/>} />
+        {/* <Route path='/Signup' element={<Signup />} /> */}
+        <Route path='/RecipeBuilder' element={<RecipeList />}/>
+        <Route path='/SignupForm' element={<SignupForm />}/>
         <Route path='/' element={<Home />}/>
-        <Route path='/RecipeList' element={<RecipeList />}/>
+        {/* <Route path='/CardContainer' element={<CardContainer/>} /> */}
       
       </Routes>
       
