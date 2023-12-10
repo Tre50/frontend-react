@@ -67,6 +67,8 @@ export default function CardContainer({ token }) {
   return (
     <main>
       <h1>Recipes</h1>
+      <br/>
+        
       <form onSubmit={findRecipe}>
         <input
           type="text"
@@ -75,7 +77,9 @@ export default function CardContainer({ token }) {
           placeholder="Title"
           onChange={handleInputChange}
           required
+          
         />
+        
         <button type="submit">Submit</button>
       </form>
 

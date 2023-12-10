@@ -46,12 +46,6 @@ export default function RecipeList({ token }) {
     <div >
       <main>
         <h2>Recipe Builder</h2>
-        <img
-      src="https://drive.google.com/file/d/1lQSzlWdWO-AaTmCdtrmtUo8Dx-bIt-KE/view?usp=drive_link"  // Replace with your image URL
-      alt="Canva Image" // Add alternative text for accessibility
-      style={{ maxWidth: 'auto', height: 'auto' }} // Apply styling if needed
-    />
-    
         <br/>
         {/* Input fields for recipe name and ingredients */}
         <input
@@ -60,9 +54,11 @@ export default function RecipeList({ token }) {
           value={recipeName}
           onChange={(e) => setRecipeName(e.target.value)}
           
-                  
+              
+      
         
         />
+         <br/>
         <br/>
         <br/>
         <textarea
@@ -75,9 +71,9 @@ export default function RecipeList({ token }) {
         {/* Display existing recipes and newly added recipe */}
         <section className="recipe-card">
 
+        <br/>
+        <br/>
         </section>
-        <br/>
-        <br/>
         {/* Build button to add the new recipe */}
         <button
           type="button"

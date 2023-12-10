@@ -53,6 +53,7 @@ background-color: chartreuse;
 border-radius: 50px;
 border-style: solid;
 font-size: 50px;
+flex-direction: row;
 
 }
 h2 {
@@ -85,8 +86,8 @@ textarea {
     border-color:darksalmon;
     background-color:navajowhite;
     font-family: monospace;
-
-
 }
+
+
 
 
