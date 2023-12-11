@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate from React Router
+import backgroundfood from '../backgroundfood.jpg';
 
 const SignupForm = () => {
   const navigate = useNavigate(); // Access the navigate function
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState({ //the object formData creates input fiels
     name: '',
     email: '',
     password: '',
@@ -12,12 +13,13 @@ const SignupForm = () => {
   });
 
   const [errors, setErrors] = useState({}); // State to manage errors
+  const [verificationComplete, setVerificationComplete] = useState(false);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
 
-    // Validation logic for each field
+    // validation logic for each field
     const newErrors = { ...errors };
 
     if (name === 'email') {
@@ -32,7 +34,7 @@ const SignupForm = () => {
     setErrors(newErrors);
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event) => { //performs validation on all fields
     event.preventDefault();
 
     // Validate all fields before submission
@@ -72,8 +74,9 @@ const SignupForm = () => {
         password: '',
         confirmPassword: ''
       });
-      alert('Signup successful!');
-      navigate('/recipe'); // Redirect to '/recipelist' (replace with your actual route)
+      setVerificationComplete(true);
+
+      navigate('/RecipeBuilder'); // Redirect to '/recipelist' (replace with your actual route)
     } catch (error) {
       console.error('Error:', error);
       alert('Something went wrong. Please try again.');
@@ -82,73 +85,85 @@ const SignupForm = () => {
 
   return (
     <header>
-        <h2>Sign Up</h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Name:</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={formData.name}
-          onChange={handleInputChange}
-          autoComplete='name'
-          required
+      {verificationComplete ? (
+        <h2>Sign Up Succesful!</h2>
+      ) : (
+        <>
+        <img src= {backgroundfood} 
+        alt="Food Background" 
+        style={{ width:'50%'}}
+        
         />
-        <br/>
-        <br/>
-        {errors.name && <p>{errors.name}</p>}
+         
+         <h2>Sign Up</h2>
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="name">Name:</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
+              autoComplete='name'
+              required
+            />
+            <br />
+            <br />
+            {errors.name && <p>{errors.name}</p>}
 
-        <label htmlFor="email">Email:</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleInputChange}
-          autoComplete='email'
-          required
-        />
-         <br/>
-        <br/>
-        {errors.email && <p>{errors.email}</p>}
+            <label htmlFor="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              autoComplete='email'
+              required
+            />
+            <br />
+            <br />
+            {errors.email && <p>{errors.email}</p>}
 
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          value={formData.password}
-          onChange={handleInputChange}
-          autoComplete='new-password'
-          required
-        />
-         <br/>
-        <br/>
-        {errors.password && <p>{errors.password}</p>}
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleInputChange}
+              autoComplete='new-password'
+              required
+            />
+            <br />
+            <br />
+            {errors.password && <p>{errors.password}</p>}
 
-        <label htmlFor="confirmPassword">Confirm Password:</label>
-        <input
-          type="password"
-          id="confirmPassword"
-          name="confirmPassword"
-          value={formData.confirmPassword}
-          onChange={handleInputChange}
-          autoComplete='new-password'
-          required
-        />
-         <br/>
-        <br/>
-        {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
+            <label htmlFor="confirmPassword">Confirm Password:</label>
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleInputChange}
+              autoComplete='new-password'
+              required
+            />
+            <br />
+            <br />
+            {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
 
-        <button type="submit" 
-            style={{
+            <button type="submit"
+              style={{
                 backgroundColor: 'aqua',
                 fontSize: '20px',
                 padding: '4px',
-                
-            }}
-        >Submit </button>
-      </form>
+
+              }}
+            >Submit </button>
+          </form>
+        </>
+      )}
     </header>
   );
 };

@@ -22,7 +22,8 @@ export default function Header(){
           </li> */}
           {!loggedIn && 
               <div >
-                {/* <li ><a href="/signup">Signup</a></li> */}
+                <li ><a href="/signupform">SignupForm</a></li>
+                <li><a href ="/recipe">Find Recipes</a></li>
                 {/* <button  type="submit" style={{backgroundColor:'skyblue'}}>Signup</button>     */}
               </div>
           }

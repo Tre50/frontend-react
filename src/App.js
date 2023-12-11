@@ -8,8 +8,8 @@ import SignupForm from './components/SignupForm';
 import Footer from './components/Footer'
 import CardContainer from './components/CardContainer';
 import RecipeList from './components/RecipeList';
-import Signup from './pages/Signup'
-//import DataDisplay from './components/DataDisplay';
+//import { UserContext } from './components/CardContainer';
+
 
 
 
@@ -18,7 +18,7 @@ import Signup from './pages/Signup'
 
 
 export const UserContext = createContext()
-// const DataDisplay = ({ data }) =>
+
 
 function App() {
 
@@ -38,11 +38,11 @@ function App() {
         <Header/>
         
       <Routes>
-        {/* <Route path='/Signup' element={<Signup />} /> */}
-        <Route path='/RecipeBuilder' element={<RecipeList />}/>
         <Route path='/SignupForm' element={<SignupForm />}/>
+        <Route path='/' element={<CardContainer />} />
+        <Route path='/RecipeBuilder' element={<RecipeList />}/>
         <Route path='/' element={<Home />}/>
-        {/* <Route path='/CardContainer' element={<CardContainer/>} /> */}
+        <Route path='/Recipe' element={<CardContainer/>} />
       
       </Routes>
       

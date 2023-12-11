@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 //import "./styles.css";
+import { useNavigate  } from "react-router-dom";
+
 export default function CardContainer({ token }) {
   const [recipes, setRecipes] = useState([]);
   const [formData, setFormData] = useState({ title: "", content: "" });
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const [imageUrl, setImageUrl] = useState("")
+  const navigate = useNavigate()
 
   const findRecipe = (evt) => {
     evt.preventDefault();
@@ -47,6 +50,7 @@ export default function CardContainer({ token }) {
         setRecipes(data); // Ensure the response includes the updated list of recipes
         setFormData({ title: "", content: "" }); // Reset form fields after submission
       })
+      navigate('')
       .catch((err) => console.error(err));
   };
 
@@ -79,16 +83,24 @@ export default function CardContainer({ token }) {
           required
           
         />
-        
-        <button type="submit">Submit</button>
+        <br/>
+        <br/>
+        <button   
+        type="submit"
+        style={{
+          backgroundColor:'aqua',
+          width: '200px'
+       
+        }}
+        >Submit</button>
       </form>
 
-      {/* Display Canva image from URL */}
+      {/* Display Canva image from URL
       <section className="image-container">
        
           {imageUrl && <img src={"gs://backend-events2-default-rtdb-backups/OVEN BAKED SNAPPER.png"} alt="Recipe Image" /> }
           
-      </section>
+      </section> */}
 
       {/* Display selected recipe details */}
       <section className="recipe-details">
