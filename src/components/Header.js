@@ -1,34 +1,38 @@
-import { useEffect, useState } from "react"
-import React from "react"
+import { useEffect, useState } from "react";
+import React from "react";
 
-export default function Header(){
-  const [loggedIn, setLoggedIn] = useState(false)
+export default function Header() {
+  const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
-    const userLS = localStorage.getItem('myUser')
+    const userLS = localStorage.getItem("myUser");
 
-    if(userLS) setLoggedIn(true)
-  },[])
+    if (userLS) setLoggedIn(true);
+  }, []);
 
   return (
-    
-    <div >
-      <br></br>
-      <br></br>
-      <nav >
-        <ul>
-          {/* <li >
-            <a  href="/Home">Welcome To The Mayne Course Recipe Builder </a>
+    <div>
+      <br />
+      <br />
+      <nav style={{ display: "flex", justifyContent: "space-between" }}>
+        <ul style={{ listStyle: "none", display: "flex", alignItems: "center" }}>
+          {/* <li>
+            <a href="/Home">Welcome To The Mayne Course Recipe Builder </a>
           </li> */}
-          {!loggedIn && 
-              <div >
-                <li ><a href="/signupform">SignupForm</a></li>
-                <li><a href ="/recipe">Find Recipes</a></li>
-                {/* <button  type="submit" style={{backgroundColor:'skyblue'}}>Signup</button>     */}
-              </div>
-          }
+          {!loggedIn && (
+            <div style={{ display: "flex" }}>
+              <li style={{ margin: "0 10px" }}>
+                <a href="/recipe">Find Recipes</a>
+              </li>
+            </div>
+          )}
         </ul>
+        {!loggedIn && (
+          <div>
+            <a href="/signupform">SignupForm</a>
+          </div>
+        )}
       </nav>
     </div>
-  )
+  );
 }

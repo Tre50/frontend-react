@@ -74,11 +74,14 @@ export default function RecipeList({ token }) {
       <main>
         <h2>Recipe Builder</h2>
         <br />
+        <br />
         <img src= {backgroundfood} 
         alt="Food Background" 
         style={{ width:'50%'}}
         
         />
+         <br />
+         <br />
         {/* Input fields for recipe name and ingredients */}
         <input
           type="text"

@@ -85,13 +85,15 @@ const SignupForm = () => {
 
   return (
     <header>
+      
       {verificationComplete ? (
         <h2>Sign Up Succesful!</h2>
       ) : (
         <>
         <img src= {backgroundfood} 
         alt="Food Background" 
-        style={{ width:'50%'}}
+        style={{ width:'60%'}}
+        
         
         />
          
